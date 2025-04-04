@@ -1,0 +1,167 @@
+/* Основные стили для body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #bbbbbb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для навигационной панели */
+.navbar {
+    background-color: #24509A;
+    box-shadow: 0 2px 4px #24509A;
+    color: #bbbbbb;
+}
+
+.navbar-brand img {
+    background-color: white;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #fff !important;
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Стили для slidebar */
+.slidebar {
+    /*background-image: url('https://taom.academy/new/fixed/perev_1_1.jpg'); /* Замените на вашу картинку */
+    background-color: #223D72;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    position: relative;
+}
+
+.slidebar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемнение */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.slidebar-content {
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Стили для карусели */
+.carousel-item {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+}
+
+.btn-icon {
+    border: none;
+    color: #ffffff;
+}
+
+.btn-icon:hover {
+    color: #ffc107;
+}
+
+/* Стили для формы создания обращения */
+#requestForm {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/*Стили для карточек*/
+
+#promo {
+    background-color: white;
+    padding: 80px 0;
+}
+
+.promo-card {
+    background-color: #24509A;
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: scale(1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 2px solid rgba(255,255,255,0.1);
+    height: 100%;
+}
+
+.promo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    z-index: 1;
+    border-color: #ffc107;
+}
+
+.promo-card .card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.promo-card .btn-icon{
+    height: 100%;
+    text-decoration:none;
+}
+
+.promo-card i{
+    margin-bottom: 0.5rem;
+}
+
+.promo-card h4 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+.promo-card p {
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.promo-card .badge {
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    margin-top: auto;
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+    .navbar-nav {
+        margin-top: 10px;
+    }
+
+    .slidebar {
+        height: 300px;
+    }
+
+    .slidebar-content {
+        padding: 10px;
+    }
+
+    .sidebar-news {
+        position: static;
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #ddd;
+    }
+}

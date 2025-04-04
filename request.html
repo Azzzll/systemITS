@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Создание обращения</title>
+    <meta name="description" content="Форма создания обращения">
+
+    <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style_request.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 form-container">
+                <h2 class="mb-4">Создание обращения</h2>
+                <form action="cgi-bin/nantes.pl" method="post">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">ID <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fio" class="form-label">ФИО <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="fio" name="fio" placeholder="ФИО" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="auditoria" class="form-label">Аудитория</label>
+                        <input type="text" class="form-control" id="auditoria" name="auditoria" placeholder="Аудитория"> 
+                    </div>
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Контакт для обратной связи</label>
+                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Контакт для обратной связи">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tema" class="form-label" aria-required="true">Тема</label>
+                        <select class="form-select" id="tema" name="tema">
+                            <option selected disabled value="">Выберите тему...</option>
+                            <option value="Проблемы доступа">Проблемы доступа</option>
+                            <option value="Неисправность программного обеспечения">Неисправность программного обеспечения</option>
+                            <option value="Неисправность АРМ">Неисправность АРМ</option>
+                            <option value="Неисправность печатной техники">Неисправность печатной техники</option>
+                            <option value="Электрика/освещение">Электрика/освещение</option>
+                            <option value="Телефония">Телефония</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Описание (текст) обращения <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Описание обращения" required></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="main.html" class="btn btn-secondary">Назад</a>
+                        <button type="submit" class="btn btn-primary">Создать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

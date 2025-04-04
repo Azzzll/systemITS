@@ -1,0 +1,151 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База знаний</title>
+    <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/css/faqstyle.css" rel="stylesheet>">
+    <style>
+        .navbar {
+    background-color: #24509A;
+    box-shadow: 0 2px 4px #24509A;
+    color: #bbbbbb;
+}
+
+.navbar-brand img {
+    background-color: white;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+}
+/* Стили для меню*/
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #fff !important;
+    margin-right: 15px;
+}
+    </style>
+</head>
+<body>
+    <!-- Шапка с навигацией -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Логотип и кнопка перехода на сайт ТАУ -->
+            <a class="navbar-brand" href="#">
+                <img src="img/TAom.png" alt="Логотип ТАУ" width="60px" height="60px" class="d-inline-block align-text-top">
+            </a>
+            <a class="btn btn-outline-light me-3" href="https://taom.academy/" target="_blank">Официальный сайт ТАУ</a>
+
+            <!-- Кнопки навигации по центру -->
+            <div class="collapse navbar-collapse justify-content-align=right"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Главная</a>
+                    </li><li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="FAQ.html">База знаний</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#create-request" data-bs-toggle="collapse" data-bs-target="#requestForm">Создать обращение</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contacts.html">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="main.html">Вход для сотрудников СИТС</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <header class="knowledge-header">
+        <div class="container">
+            <h1>База знаний ИТ-службы</h1>
+            <p class="lead">Найдите решение своей проблемы самостоятельно</p>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Поиск и фильтры -->
+        <div class="row mb-4">
+            <div class="col-md-4 mb-3">
+                <div class="filter-section">
+                    <h5>Категории</h5>
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">Все категории</option>
+                        <option>Аппаратные проблемы</option>
+                        <option>Программное обеспечение</option>
+                        <option>Сеть и интернет</option>
+                        <option>Учетные записи</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="filter-section">
+                    <h5>Поиск по базе знаний</h5>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Введите ключевые слова...">
+                </div>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="articlesContainer">
+            <div class="col" data-category="Аппаратные проблемы" data-tags="питание,монитор">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge bg-primary category-badge">Аппаратные проблемы</span>
+                        <h5 class="card-title">Компьютер не включается</h5>
+                        <p class="card-text">Проверьте подключение к питанию, состояние кабелей и индикаторы на системном блоке.</p>
+                        <div class="mt-auto">
+                            <span class="badge bg-secondary tag">питание</span>
+                            <span class="badge bg-secondary tag">монитор</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col" data-category="Сеть и интернет" data-tags="wi-fi,роутер">
+                <div class="card article-card h-100">
+                    <div class="card-body">
+                        <span class="badge bg-success category-badge">Сеть и интернет</span>
+                        <h5 class="card-title">Нет подключения к интернету</h5>
+                        <p class="card-text">Проверьте кабельное подключение, перезагрузите роутер, убедитесь в правильности настроек сети.</p>
+                        <div class="mt-auto">
+                            <span class="badge bg-secondary tag">wi-fi</span>
+                            <span class="badge bg-secondary tag">роутер</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><a href="index.html" class="btn btn-secondary">Назад</a>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        function filterArticles() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            
+            document.querySelectorAll('#articlesContainer .col').forEach(article => {
+                const category = article.getAttribute('data-category');
+                const title = article.querySelector('.card-title').textContent.toLowerCase();
+                const content = article.querySelector('.card-text').textContent.toLowerCase();
+                
+                const matchesSearch = title.includes(searchText) || content.includes(searchText);
+                const matchesCategory = !selectedCategory || category === selectedCategory;
+                
+                article.style.display = (matchesSearch && matchesCategory) ? 'block' : 'none';
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('input', filterArticles);
+        document.getElementById('categoryFilter').addEventListener('change', filterArticles);
+        document.querySelectorAll('.article-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Здесь можно реализовать переход на полную статью
+                alert('Переход к полной статье');
+            });
+        });
+    </script>
+</body>
+</html>

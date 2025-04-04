@@ -1,0 +1,47 @@
+/* Sidebar styles */
+.sidebar {
+    height: 4%;
+}
+
+.sidebar .btn.active {
+    background-color: #71b6ff;
+    color: rgb(2, 2, 2);
+}
+
+.sidebar .btn:hover:not(.active) {
+    background-color: #ddd;
+}
+
+/* Table styles */
+.table th {
+    cursor: pointer;
+}
+
+.parent-container {
+    display: flex;
+    justify-content: flex-end; /* Элементы будут расположены справа */
+    padding: 10px; /* Чтобы добавить отступы вокруг контейнера, если нужно */
+    background-color: #ebf5ff;
+}
+.personal-menu .btn-link {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+.table th .form-select-sm {
+    display: inline-block;
+    max-width: 80px;
+    margin-top: 5px;
+    padding: 0.25rem 0.5rem;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Добавляем отступ между строками */
+}
+
+.form-row label {
+    margin-right: 10px; /* Добавляем отступ между label и input */
+}
+

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База оборудования</title>
+    <!-- Bootstrap CSS -->
+    <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.5/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <h1>База оборудования</h1><br>
+
+        <!-- Кнопки для управления записями -->
+        <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-primary" id="addEntryBtn">Новая запись</button>
+            <button class="btn btn-danger" id="deleteSelectedBtn">Удалить выделенное</button>
+        </div>
+
+        <!-- Адаптивная таблица с данными -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>№</th>
+                        <th>Раздел
+                            <select id="filterSection" class="form-select form-select-sm">
+                                <option value="">Все</option>
+                                <option value="ВТ">ВТ</option>
+                                <option value="ММ">ММ</option>
+                                <option value="ОТ">ОТ</option>
+                                <option value="пф">пф</option>
+                                <option value="СО">СО</option>
+                                <option value="рх">рх</option>
+                                <option value="к">к</option>
+                                <option value="мк">мк</option>
+                            </select>
+                        </th>
+                        <th>Тип
+                            <select id="filterType" class="form-select form-select-sm">
+                                <option value="">Все</option>
+                                <option value="ноутбук">ноутбук</option>
+                                <option value="планшет">планшет</option>
+                                <option value="сервер">сервер</option>
+                                <!-- Добавьте остальные типы -->
+                            </select>
+                        </th>
+                        <th>Наименование/описание</th>
+                        <th>Инвентарный №</th>
+                        <th>Серийный №</th>
+                        <th>Местоположение подразделение
+                            <select id="filterLocationDepartment" class="form-select form-select-sm">
+                                <option value="">Все</option>
+                                <option value="д/с">д/с</option>
+                                <option value="СОШ">СОШ</option>
+                                <option value="ВУЗ">ВУЗ</option>
+                            </select>
+                        </th>
+                        <th>Местоположение аудитория</th>
+                        <th>Местоположение рабочее место</th>
+                    </tr>
+                </thead>
+
+                <!-- Тело таблицы -->
+                <tbody id="equipmentTableBody">
+
+                    <tr data-id="1" data-section="ВТ" data-type="ноутбук" data-location-department="д/с">
+                        <td><input type="checkbox"></td>
+                        <td>1</td>
+                        <td>ВТ</td>
+                        <td>ноутбук</td>
+                        <td>Acer Aspire 5-17</td>
+                        <td>32112312</td>
+                        <td>s11223344</td>
+                        <td>д/с</td>
+                        <td>105</td>
+                        <td>15</td>
+                    </tr>
+                    <tr data-id="2" data-section="ММ" data-type="планшет" data-location-department="СОШ">
+                        <td><input type="checkbox"></td>
+                        <td>2</td>
+                        <td>ММ</td>
+                        <td>планшет</td>
+                        <td>Acer Aspire 5-17</td>
+                        <td>32112312</td>
+                        <td>s11223344</td>
+                        <td>СОШ</td>
+                        <td>105</td>
+                        <td>15</td>
+                    </tr>
+                    <tr data-id="3" data-section="ОТ" data-type="сервер" data-location-department="ВУЗ">
+                        <td><input type="checkbox"></td>
+                        <td>3</td>
+                        <td>ОТ</td>
+                        <td>сервер</td>
+                        <td>Acer Aspire 5-17</td>
+                        <td>32112312</td>
+                        <td>s11223344</td>
+                        <td>ВУЗ</td>
+                        <td>105</td>
+                        <td>15</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <!-- Модальное окно для просмотра записи -->
+            <!-- Оно будет заполняться динамически через JS -->
+            <!-- ID editModal используется для редактирования записи-->
+        </div>
+
+        
+        <!-- Модальное окно для просмотра и редактирования записи -->
+        <div class="modal fade" id="viewEditModal" tabindex="-1" aria-labelledby="viewEditModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="viewEditModalLabel">Просмотр записи</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editForm">
+                            <div class="form-row">
+                                <label for="editSection" class="form-label">Раздел:</label>
+                                <input type="text" class="form-control" id="editSection">
+                            </div>
+                            <div class="form-row">
+                                <label for="editType" class="form-label">Тип:</label>
+                                <input type="text" class="form-control" id="editType">
+                            </div>
+                            <div class="form-row">
+                                <label for="editDescription" class="form-label">Наименование/описание:</label>
+                                <input type="text" class="form-control" id="editDescription">
+                            </div>
+                            <div class="form-row">
+                                <label for="editInventoryNumber" class="form-label">Инвентарный №:</label>
+                                <input type="text" class="form-control" id="editInventoryNumber">
+                            </div>
+                            <div class="form-row">
+                                <label for="editSerialNumber" class="form-label">Серийный №:</label>
+                                <input type="text" class="form-control" id="editSerialNumber">
+                            </div>
+                            <div class="form-row">
+                                <label for="editLocationDepartment" class="form-label">Местоположение подразделение:</label>
+                                <input type="text" class="form-control" id="editLocationDepartment">
+                            </div>
+                            <div class="form-row">
+                                <label for="editLocationAudience" class="form-label">Местоположение аудитория:</label>
+                                <input type="text" class="form-control" id="editLocationAudience">
+                            </div>
+                            <div class="form-row">
+                                <label for="editLocationWorkplace" class="form-label">Местоположение рабочее место:</label>
+                                <input type="text" class="form-control" id="editLocationWorkplace">
+                            </div>
+                            <!-- -->
+                            <div class="form-row">
+                                <label for="previous_location_P" class="form-label">Предыдущее местоположение П:</label>
+                                <input type="text" class="form-control" id="previous_location_P">
+                            </div>
+                            <div class="form-row">
+                                <label for="previous_location_A" class="form-label">Предыдущее местоположение А:</label>
+                                <input type="text" class="form-control" id="previous_location_A">
+                            </div>
+                            <div class="form-row">
+                                <label for="previous_location_RM" class="form-label">Предыдущее местоположение РМ:</label>
+                                <input type="text" class="form-control" id="previous_location_RM">
+                            </div>
+                            <div class="form-row">
+                                <label for="notes_description" class="form-label">Примечание/описание:</label>
+                                <input type="text" class="form-control" id="notes_description">
+                            </div>
+                            <div class="form-row">
+                                <label for="dns_name" class="form-label">dns-name:</label>
+                                <input type="text" class="form-control" id="dns_name">
+                            </div>
+                            <div class="form-row">
+                                <label for="mac_address" class="form-label">mac-адрес:</label>
+                                <input type="text" class="form-control" id="mac_address">
+                            </div>
+                            <div class="form-row">
+                                <label for="brand" class="form-label">Марка:</label>
+                                <input type="text" class="form-control" id="brand">
+                            </div>
+                            <div class="form-row">
+                                <label for="model" class="form-label">Модель:</label>
+                                <input type="text" class="form-control" id="model">
+                            </div>
+                            <div class="form-row">
+                                <label for="diagonal" class="form-label">Диагональ:</label>
+                                <input type="text" class="form-control" id="diagonal">
+                            </div>
+                            <div class="form-row">
+                                <label for="focal_length" class="form-label">Фокусное расстояние:</label>
+                                <input type="text" class="form-control" id="focal_length">
+                            </div>
+                            <div class="form-row">
+                                <label for="poe" class="form-label">ПоЕ:</label>
+                                <input type="text" class="form-control" id="poe">
+                            </div>
+                            <div class="form-row">
+                                <label for="cpu" class="form-label">cpu:</label>
+                                <input type="text" class="form-control" id="cpu">
+                            </div>
+                            <div class="form-row">
+                                <label for="ram" class="form-label">ram:</label>
+                                <input type="text" class="form-control" id="ram">
+                            </div>
+                            <div class="form-row">
+                                <label for="storage" class="form-label">Накопители:</label>
+                                <input type="text" class="form-control" id="storage">
+                            </div>
+                            <div class="form-row">
+                                <label for="power_supply" class="form-label">Блок питания:</label>
+                                <input type="text" class="form-control" id="power_supply">
+                            </div>
+                            <div class="form-row">
+                                <label for="frame" class="form-label">Корпус:</label>
+                                <input type="text" class="form-control" id="frame">
+                            </div>
+                            <div class="form-row">
+                                <label for="length" class="form-label">Длина /формат:</label>
+                                <input type="text" class="form-control" id="length">
+                            </div>
+                            <div class="form-row">
+                                <label for="port_count" class="form-label">Кол-во портов:</label>
+                                <input type="text" class="form-control" id="port_count">
+                            </div>
+                            <div class="form-row">
+                                <label for="port_1" class="form-label">Порт 1:</label>
+                                <input type="text" class="form-control" id="port_1">
+                            </div>
+                            <div class="form-row">
+                                <label for="port_2" class="form-label">Порт 2:</label>
+                                <input type="text" class="form-control" id="port_2">
+                            </div>
+                            <!-- -->
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="saveChangesBtn">Сохранить изменения</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br><a href="main.html" class="btn btn-secondary">Назад</a>
+    </div>
+    
+
+    <!-- Подключение JS-файла -->
+    <script src="js/equipment_script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
