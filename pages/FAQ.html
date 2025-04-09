@@ -3,30 +3,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База знаний</title>
-    <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="css/css/faqstyle.css" rel="stylesheet>">
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/faqstyle.css" rel="stylesheet>">
     <style>
         .navbar {
-    background-color: #24509A;
-    box-shadow: 0 2px 4px #24509A;
-    color: #bbbbbb;
-}
+            background-color: #24509A;
+            box-shadow: 0 2px 4px #24509A;
+            color: #bbbbbb;
+        }
 
-.navbar-brand img {
-    background-color: white;
-    border-radius: 30px;
-    margin-right: 10px;
-}
+        .navbar-brand img {
+            background-color: white;
+            border-radius: 30px;
+            margin-right: 10px;
+        }
 
-.navbar-nav .nav-link:hover {
-    color: #ffc107 !important;
-}
-/* Стили для меню*/
-.navbar-nav .nav-link {
-    font-weight: 500;
-    color: #fff !important;
-    margin-right: 15px;
-}
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+        }
+        /* Стили для меню*/
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #fff !important;
+            margin-right: 15px;
+        }
     </style>
 </head>
 <body>
@@ -35,7 +35,7 @@
         <div class="container-fluid">
             <!-- Логотип и кнопка перехода на сайт ТАУ -->
             <a class="navbar-brand" href="#">
-                <img src="img/TAom.png" alt="Логотип ТАУ" width="60px" height="60px" class="d-inline-block align-text-top">
+                <img src="../img/TAom.png" alt="Логотип ТАУ" width="60px" height="60px" class="d-inline-block align-text-top">
             </a>
             <a class="btn btn-outline-light me-3" href="https://taom.academy/" target="_blank">Официальный сайт ТАУ</a>
 
@@ -43,19 +43,19 @@
             <div class="collapse navbar-collapse justify-content-align=right"></div>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Главная</a>
+                        <a class="nav-link" href="../index.php">Главная</a>
                     </li><li class="nav-item">
                     <li class="nav-item">
-                        <a class="nav-link" href="FAQ.html">База знаний</a>
+                        <a class="nav-link" href="../scripts/FAQ.php">База знаний</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#create-request" data-bs-toggle="collapse" data-bs-target="#requestForm">Создать обращение</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="contacts.html">Контакты</a>
+                        <a class="nav-link active" href="../contacts.php">Контакты</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="main.html">Вход для сотрудников СИТС</a>
+                        <a class="nav-link" href="../autorization.php">Вход для сотрудников СИТС</a>
                     </li>
                 </ul>
             </div>
@@ -118,9 +118,9 @@
                 </div>
             </div>
         </div>
-        <br><a href="index.html" class="btn btn-secondary">Назад</a>
+        <br><a href="../index.php" class="btn btn-secondary">Назад</a>
     </div>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <script>
         function filterArticles() {
             const searchText = document.getElementById('searchInput').value.toLowerCase();

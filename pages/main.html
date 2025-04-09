@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Основная страница</title>
-    <link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style_mail.css">
-    <link rel="stylesheet" href="css/style_request.css">
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style_mail.css">
+    <link rel="stylesheet" href="../css/style_request.css">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
@@ -14,8 +14,14 @@
     <div class="parent-container">
         <button class="btn btn-link dropdown-toggle d-flex align-items-center text-dark text-decoration-none py-2"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="img/icono.png" width="20" class="rounded-circle me-2">
-            <span>Иванов Иван Иванович</span>
+            <img src="../img/icono.png" width="20" class="rounded-circle me-2">
+            <span>
+                <?php 
+                echo($_SESSION['surname']); echo(' ');
+                echo($_SESSION['first_name']); echo(' ');
+                echo($_SESSION['last_name']);
+                 ?>
+            </span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Выйти</a></li>
@@ -127,8 +133,8 @@
     </div>
     
     <!-- Scripts -->
-    <script src="bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="bootstrap/script.js"></script>
+    <script src="../bootstrap/script.js"></script>
 </body>
 </html>
