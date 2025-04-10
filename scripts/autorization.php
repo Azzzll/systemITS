@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+
 // $pdo = getPDO();
 // require_once __DIR__ . '/../helpers.php';
 $server = 'MySQL-8.0'; // Имя или адрес сервера
@@ -15,7 +16,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $columns[] = $row['Field'];
 }
 
-
+var_dump($_SESSION['tema']);
+echo ($_SESSION['tema']);
 // Обработка формы авторизации
 $error = ''; 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
     if (!empty($username) && !empty($password)) {
         // Используем подготовленные выражения для безопасности
-        $stmt = $db->prepare("SELECT user_id, password, last_name, first_name, surname FROM users WHERE email = ?");        $stmt->bind_param("s", $username);
+        $stmt = $db->prepare("SELECT user_id, password, last_name, first_name, surname FROM users WHERE email = ?");        
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         

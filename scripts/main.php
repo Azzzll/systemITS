@@ -7,6 +7,5 @@ if (isUserAuthorized()){
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_unset();
-    echo'qweqweqweewwqdsfv';
     header("Location: ./../");
 }
