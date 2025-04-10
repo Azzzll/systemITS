@@ -12,6 +12,7 @@
 </head>
 <body>
     <div class="parent-container">
+        
         <button class="btn btn-link dropdown-toggle d-flex align-items-center text-dark text-decoration-none py-2"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="../img/icono.png" width="20" class="rounded-circle me-2">
@@ -24,8 +25,13 @@
             </span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Выйти</a></li>
+            <form id="loginForm" action="../scripts/main.php" method="POST">
+            <li>            
+                <button type="submit" style="border: 0; width: 100%; text-align: left; background-color:unset;">Выйти</button>
+            </li>
+            </form>
         </ul>
+    </form>
     </div>
 
     <div class="container-fluid">
@@ -33,7 +39,7 @@
             <!-- Sidebar -->
             <nav class="col-md-3 col-lg-2 bg-light sidebar py-3">
                 <div class="d-flex flex-column align-items-start">
-                    <button class="btn btn-primary w-100 mb-2" onclick="navigate('request.html')">Новая заявка</button>
+                    <button class="btn btn-primary w-100 mb-2" onclick="navigate('../scripts/request.php')">Новая заявка</button>
                     <button class="btn btn-secondary w-100 mb-2" onclick="changeSection('unassigned')">Неназначенные заявки</button>
                     <button class="btn btn-secondary w-100 mb-2" onclick="changeSection('myRequests')">Мои заявки</button>
                     <button class="btn btn-secondary w-100 mb-2" onclick="changeSection('archive')">Архив заявок</button>

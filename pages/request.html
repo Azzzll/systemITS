@@ -17,15 +17,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8 form-container">
                 <h2 class="mb-4">Создание обращения</h2>
-                <form action="cgi-bin/nantes.pl" method="post">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ID <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fio" class="form-label">ФИО <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="fio" name="fio" placeholder="ФИО" required>
-                    </div>
+                <form action="../scripts/request.php" method="POST">
                     <div class="mb-3">
                         <label for="auditoria" class="form-label">Аудитория</label>
                         <input type="text" class="form-control" id="auditoria" name="auditoria" placeholder="Аудитория"> 
@@ -54,7 +46,7 @@
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <a href="main.html" class="btn btn-secondary">Назад</a>
+                        <a href="../scripts/main.php" class="btn btn-secondary">Назад</a>
                         <button type="submit" class="btn btn-primary">Создать</button>
                     </div>
                 </form>
