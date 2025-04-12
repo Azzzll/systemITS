@@ -1,12 +1,9 @@
 <?php
 session_start(); 
-
-// $pdo = getPDO();
-// require_once __DIR__ . '/../helpers.php';
-$server = 'MySQL-8.0'; // Имя или адрес сервера
-$user = 'root'; // Имя пользователя БД
-$password = ''; // Пароль пользователя
-$db_name = 'its_db'; // Название БД
+$server = 'MySQL-8.0'; 
+$user = 'root';
+$password = '';
+$db_name = 'its_db';
 $db = mysqli_connect($server, $user, $password, $db_name);
 require_once('../pages/autorization.html');
 
@@ -55,9 +52,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
 }
-
-// Если пользователь уже авторизован
-// if (isset($_SESSION['user_id'])) {
-//     header('Location: profile.php');
-//     exit;
-//  }
