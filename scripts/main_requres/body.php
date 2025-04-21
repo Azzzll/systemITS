@@ -63,13 +63,13 @@
 
             <!-- Main Content -->
             <main class="col-md-9 col-lg-10 px-md-4">
-                <!-- Table -->
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped" id="dataTable">
-                        <thead id="tableHeader"></thead>
-                        <tbody id="tableBody"></tbody>
-                    </table>
-                </div>
+                <?php
+                require_once __DIR__ . './../funcs/authorisation_check.php';
+                if (isUserAuthorized()){
+                    require_once('table.php');
+                    
+                }
+                ?>
             </main>
         </div>
     </div>

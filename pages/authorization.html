@@ -13,11 +13,19 @@
         <form id="oauthForm" method="POST">
             <div class="form-group">
                 <label for="username">Логин</label>
-                <input type="text" class="form-control" name="username" id="username" required>
+                <input type="email" class="form-control" name="username" id="username" required 
+                       minlength="4" maxlength="20">
+                <small id="usernameHelp" class="form-text text-danger" style="display:none;">
+                    Логин должен содержать от 4 до 20 символов (только буквы и цифры)
+                </small>
             </div>
             <div class="form-group">
                 <label for="password">Пароль</label>
-                <input type="password" class="form-control" name="password" id="password" required>
+                <input type="password" class="form-control" name="password" id="password" required
+                       minlength="6" maxlength="30" oninput="validatePassword()">
+                <small id="passwordHelp" class="form-text text-danger" style="display:none;">
+                    Пароль должен содержать от 6 до 30 символов
+                </small>
             </div>
             <button type="submit" class="btn btn-primary">Войти</button>
         </form>

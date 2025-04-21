@@ -2,13 +2,15 @@
 require_once __DIR__ . './funcs/authorisation_check.php';
 require_once __DIR__ . './funcs/connect_mysql.php';
 session_start();
-connectToDB();
 $mysqli = connectToDB();
 
 if (isUserAuthorized()){
     require_once('../pages/request.html');
-    
 }
+else{
+    header("Location: ../");
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auditoria = $_POST['auditoria'];
     $contact = $_POST['contact'];
@@ -29,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Привязка параметров
             $stmt->bind_param("isssss", $userID, $description, $auditoria, $tema, $contact, $status);
             if ($stmt->execute()) {
-                echo 'запрос отправлен';
                 // header("Location: ./");
                 exit();
             } else {
@@ -39,10 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         catch (Exception $e) {
             echo 'Произошла ошибка. Пожалуйста, попробуйте позже.';
         } 
-        /* finally {
-            $stmt->close();
-            $mysqli->close();
-        } */
+
     }
 }
 

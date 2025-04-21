@@ -6,6 +6,7 @@ function isUserAuthorized(): bool{
     $user = 'root'; 
     $password = ''; 
     $db_name = 'its_db'; 
+    
     if (isset($_SESSION['username']) && isset($_SESSION['password'])){
         $db = mysqli_connect($server, $user, $password, $db_name);
         $result = mysqli_query($db, "SHOW COLUMNS FROM users");

@@ -1,8 +1,5 @@
 const data = {
     myRequests: [
-        { id: 1, topic: "Неисправность АРМ", applicant: "Иванов И.И.", date: "2025-03-07T14:00", status: "Новая", priority: "Средняя", executor: "Иванов И.И." },
-        { id: 2, topic: "Проблемы доступа", applicant: "Петров П.П.", date: "2025-03-08T10:00", status: "В работе", priority: "Срочно", executor: "Иванов И.И." },
-        { id: 3, topic: "Электрика", applicant: "Носов П.П.", date: "2025-03-08T10:00", status: "В работе", priority: "Срочно", executor: "Иванов И.И." }
     ],
     unassigned: [
         { id: 1, topic: "Неисправность печатной техники", applicant: "Сидоров С.С.", date: "2025-03-09T12:00", status: "Новая", priority: "Срочно", executor: "" },

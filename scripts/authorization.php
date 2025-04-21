@@ -1,7 +1,8 @@
 <?php
 session_start(); 
-// $pdo = getPDO();
-// require_once __DIR__ . '/../helpers.php';
+// qwdefwefds
+// awdfscssxx
+// rasmuslerdorf
 $server = 'MySQL-8.0'; // Имя или адрес сервера
 $user = 'root'; // Имя пользователя БД
 $password = ''; // Пароль пользователя
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
     if (!empty($username) && !empty($password)) {
         // Используем подготовленные выражения для безопасности
-        $stmt = $db->prepare("SELECT user_id, password, last_name, first_name, surname FROM users WHERE email = ?");        
+        $stmt = $db->prepare("SELECT user_id, password, last_name, first_name, role_id, surname FROM users WHERE email = ?");        
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -35,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $user['password'])) {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $username;
+                $_SESSION['role_id'] = $user['role_id'];
                 $_SESSION['password'] = $password;
                 $_SESSION['first_name'] = $user['first_name'];
                 $_SESSION['surname'] = $user['surname'];
@@ -43,10 +45,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 exit;
             } else {
-                echo('Неверный пароль');
+                echo('Неверный пароль или логин');
             }
         } else {
-            echo('Пользователь не найден');
+            echo('Неверный пароль или логин');
         } 
     } else {
         $error = 'Заполните все поля';
