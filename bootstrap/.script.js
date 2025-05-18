@@ -79,7 +79,7 @@ function renderTableHeader() {
         }
     }).join("");
 
-    document.getElementById("tableHeader").innerHTML = `<tr>${headerRow}</tr>`;
+    // document.getElementById("tableHeader").innerHTML = `<tr>${headerRow}</tr>`;
 
     // Инициализация календаря для даты
     flatpickr("#filterDate", {

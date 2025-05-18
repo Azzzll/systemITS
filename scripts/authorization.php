@@ -1,5 +1,6 @@
 <?php
 session_start(); 
+require_once __DIR__ . './funcs/authorisation_check.php';
 // qwdefwefds
 // awdfscssxx
 // rasmuslerdorf
@@ -8,7 +9,12 @@ $user = 'root'; // Имя пользователя БД
 $password = ''; // Пароль пользователя
 $db_name = 'its_db'; // Название БД
 $db = mysqli_connect($server, $user, $password, $db_name);
-require_once('../pages/authorization.html');
+if (isUserAuthorized()){
+    header("Location: ./main.php");
+}
+else{
+    require_once('../pages/authorization.html');
+}
 
 $result = mysqli_query($db, "SHOW COLUMNS FROM users");
 $columns = [];

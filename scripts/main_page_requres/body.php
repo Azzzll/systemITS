@@ -7,7 +7,7 @@
     <link href="../bootstrap/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style_mail.css">
     <link rel="stylesheet" href="../css/style_request.css">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
@@ -25,9 +25,9 @@
             </span>
         </button>
         <ul class="dropdown-menu dropdown-menu-end">
-            <form id="loginForm" action="../scripts/main.php" method="POST">
+            <form id="logoutForm" action="../scripts/funcs/logout.php" method="POST">
             <li>            
-                <button type="submit" style="border: 0; width: 100%; text-align: left; background-color:unset;">Выйти</button>
+                <button type="submit" name="logout" style="border: 0; width: 100%; text-align: left; background-color:unset;">Выйти</button>
             </li>
             </form>
         </ul>
@@ -65,10 +65,7 @@
             <main class="col-md-9 col-lg-10 px-md-4">
                 <?php
                 require_once __DIR__ . './../funcs/authorisation_check.php';
-                if (isUserAuthorized()){
-                    require_once('table.php');
-                    
-                }
+                require_once('table.php');
                 ?>
             </main>
         </div>
@@ -129,11 +126,15 @@
                                 <label for="requestComment" class="form-label">Комментарий</label>
                                 <textarea id="requestComment" placeholder="Комментарий" class="form-control"></textarea>
                             </div>
+                            
                         </div>
                         <div class="v-line"></div>
                         <div class="form-section">
+                            
                             <div class="action-table">
+                                
                                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Действие</button>
+                                
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Принять</a></li>
                                     <li><a class="dropdown-item" href="#">Решена</a></li>
@@ -141,19 +142,21 @@
                                 </ul>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                </div>
+                
             </div>
         </div>
         
     </div>
-    
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered"> <!-- modal-dialog-centered - чтобы окно было по центру -->
+        
+    </div>
+</div>
     <!-- Scripts -->
     <script src="../bootstrap/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="../bootstrap/script.js"></script>
 </body>
 </html>
