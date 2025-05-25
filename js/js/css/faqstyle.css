@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+.knowledge-header {
+    background-color: #004085;
+    color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+.article-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+    min-height: 200px;
+}
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.category-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.filter-section {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.tag {
+    margin: 2px;
+    cursor: pointer;
+}

@@ -54,7 +54,7 @@
                     }
                     if ($_SESSION['role_id'] == '2' or $_SESSION['role_id'] == '3'){
                         echo '<button class="btn btn-secondary w-100 mb-2">Архив заявок</button>';
-                        echo '<button class="btn btn-primary w-100 mb-2">База оборудования</button>';
+                        echo '<a href="../scripts/equipment.php" class="btn btn-primary w-100 mb-2">База оборудования</a>';
                     }
                     ?>
                     <br><a href="../" class="btn btn-secondary">Назад</a>

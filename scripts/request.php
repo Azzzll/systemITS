@@ -10,7 +10,7 @@ if (isUserAuthorized()){
 else{
     header("Location: ../");
 }
-
+// Подготовленный запрос MySQLi
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $auditoria = $_POST['auditoria'];
     $contact = $_POST['contact'];
